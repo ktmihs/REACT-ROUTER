@@ -39,6 +39,7 @@ cli /about
 - <HashRouter>
 	주소 뒤에 #를 사용함, 옛날 브라우저에서도 사용할 수 있음
 - <MemoryRouter>
+	(주소가 변경되진 않음)
 	브라우저가 아닌(브라우저 주소와 무관) 테스트나 리액트 네이티브 같은 환경에서 사용하기 좋음
 - <StaticRouter>
 	서버사이드렌더링 시 사용
@@ -46,3 +47,52 @@ cli /about
 	라우트를 정의할 때 사용
 - <Link>
 	사용한 Router의 주소를 바꿈, a 태그지만 새로고침 안 됨!
+
+<hr/>
+
+### parameter & query
+```
+<h5>parameter</h5>
+const {username}=match.params
+// match를 params로 받아 path안의 parameter값을 받아올 수 있음
+
+
+<h5>query</h5>
+const query=qs.parse(location.search,{  // ?포함되어있기 때문에 파싱(값추출)해야함
+        ignoreQueryPrefix:true  // ? 삭제
+    })
+```
+
+### 서브 라우터
+- 특정 경로에 탭이 있을 경우, 서브 라우터를 사용하면 편함
+
+### history
+- 컴포넌트에서 라우터에 직접적인 접근을 할 수 있음
+- 특정 함수를 호출했을 때, 특정 경로로 이동하거나 뒤로가거나 페이지 이탈을 방지할 수 있음
+##### push
+- 이동
+##### back
+- 이전으로
+##### replace
+- 이전으로(방문기록 남기지 않음)
+##### block
+- 이탈 방지
+
+### withRouter
+- 라우터 텀포넌트가 아닌 곳에서 match, location, history 사용(조건부로 이동해야 할 때)
+	- ex. 로그인 성공 시에만 페이지 이동하고 싶을 때
+
+### location
+- 어디에서 불러오든 똑같은 값
+
+### match
+- 현재 component가 렌더링된 위치를 기준으로 match를 불러옴
+
+### switch
+- 여러 라우트 중 가장 먼저 매칭된 것 하나만 보여줌
+
+### NavLink
+- 현재 주소와 일치한다면 스타일 바꾸기
+
+### useReactRouter Hook
+- yarn add use-react-router 설치로 편리하게 사용가능

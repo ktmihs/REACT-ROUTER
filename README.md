@@ -47,9 +47,10 @@ cli /about
 	라우트를 정의할 때 사용
 - <Link>
 	사용한 Router의 주소를 바꿈, a 태그지만 새로고침 안 됨!
-
+<br/>
 <hr/>
-
+<br/>
+	
 ### parameter & query
 ```
 <h5>parameter</h5>
@@ -69,17 +70,12 @@ const query=qs.parse(location.search,{  // ?포함되어있기 때문에 파싱(
 ### history
 - 컴포넌트에서 라우터에 직접적인 접근을 할 수 있음
 - 특정 함수를 호출했을 때, 특정 경로로 이동하거나 뒤로가거나 페이지 이탈을 방지할 수 있음
-##### push
-- 이동
-##### back
-- 이전으로
-##### replace
-- 이전으로(방문기록 남기지 않음)
-##### block
-- 이탈 방지
+##### push - 이동
+##### back - 이전으로
+##### replace - 이전으로(방문기록 남기지 않음)
+##### block - 이탈 방지
 
-### withRouter
-- 라우터 텀포넌트가 아닌 곳에서 match, location, history 사용(조건부로 이동해야 할 때)
+### withRouter - 라우터 텀포넌트가 아닌 곳에서 match, location, history 사용(조건부로 이동해야 할 때)
 	- ex. 로그인 성공 시에만 페이지 이동하고 싶을 때
 
 ### location

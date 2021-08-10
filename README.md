@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# ROUTER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Single Page Application(SPA)
+- 라우팅(어떤 주소에 어떤 UI를 보여줄지를 작업)을 클라이언트가 담당
 
-## Available Scripts
+### non-SPA
+```
+cli---/about--->server
+   <---html---
 
-In the project directory, you can run:
+단) 사용자와 인터렉션이 많은 경우, 적합하지 않음
+```
 
-### `yarn start`
+### SPA
+```
+cli /about
+       👇
+   re-render ------> server
+(서버에 요청하지 않고도 바로 페이지를 보여줌)
+동적인 움직임이 필요할 때만, 특정 api를 요청해서 필요한 데이터만 json형식으로 받아옴
+  re-render<--json---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 장) 서버에서는 서버 자원을 아낄 수 있고
+클라이언트 쪽에서는 사용자가 더 좋은 사용자 경험을 누릴 수 있음
+- 단1) 앱의 규모가 커지면 js파일의 크기가 너무 커질 수 있음
+	-> code splitting을 통해 해결할 수 있음(각 기능별로 파일을 분리시켜서 필요한 것만 불러옴)
+- 단2) 브라우저에서 자바스크립트가 구동되지 않으면 UI를 볼 수 없음
+(ex. 검색엔진에서 크롤링 불가능)
+	-> server side rendering을 통해 해결할 수 있음
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 가장 많이 사용되는 라이브러리
+	- react-router (컴포넌트를 기반으로 라우팅함-props설정)
+	- 대안: Next.js(서버사이드렌더링을 굉장히 쉽게 - 구현할 수 있음, 파일 경로`이름을 기반으로 라우팅 함)
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- <BrowserRouter>
+	HTML5 History API 사용
+	주소만 바꾸고 페이지는 다시 불러오지는 않음
+- <HashRouter>
+	주소 뒤에 #를 사용함, 옛날 브라우저에서도 사용할 수 있음
+- <MemoryRouter>
+	브라우저가 아닌(브라우저 주소와 무관) 테스트나 리액트 네이티브 같은 환경에서 사용하기 좋음
+- <StaticRouter>
+	서버사이드렌더링 시 사용
+- <Route>
+	라우트를 정의할 때 사용
+- <Link>
+	사용한 Router의 주소를 바꿈, a 태그지만 새로고침 안 됨!
